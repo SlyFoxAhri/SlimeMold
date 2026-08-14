@@ -12,7 +12,7 @@ int main(void)
     int cellcount = 200;
     int cellNum = 1000;
     Cell celltarray[1000];
-    Scent scentarray[200][200];
+    Scent scent;
 
     
     InitWindow(cellsize*cellcount, cellsize*cellcount, "Slime Mold Enclosure");
@@ -26,17 +26,8 @@ int main(void)
         cout << "ok: " << cell.direction.x << " " << cell.direction.y << endl;
     }
 
-    for (int i = 0; i < cellcount; i = i + 5)
-    {
-        for (int j = 0; j < cellcount; j = j + 5)
-        {
-            Scent scent;
-            scent.x = i; scent.y =j;
-            scentarray[i][j] = scent;
-            scentarray[i][j].Draw(); 
-        }
-        
-    }
+    
+    //nnow we have filled a colorarray
          
 
     while (!WindowShouldClose())
@@ -44,7 +35,7 @@ int main(void)
         BeginDrawing();
         ClearBackground(BLACK);
 
-        
+        scent.Draw();        
 
         //cells
         for (int i = 0; i < cellNum; i++)
@@ -53,17 +44,7 @@ int main(void)
             celltarray[i].Update();
         }
 
-        for (int i = 0; i < cellcount; i = i + 5)
-    {
-        for (int j = 0; j < cellcount; j = j + 5)
-        {
-            Scent scent;
-            scent.x = i; scent.y =j;
-            scentarray[i][j] = scent;
-            scentarray[i][j].Draw(); 
-        }
         
-    }
         
         
 
