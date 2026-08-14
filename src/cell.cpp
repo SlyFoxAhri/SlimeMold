@@ -1,5 +1,4 @@
 #include "cell.hpp"
-#include <math.h>
 
 Cell::Cell()
 {
@@ -15,17 +14,11 @@ Cell::Cell()
     color = RED;
 }
 
-Cell::~Cell()
-{
-
-}
-
 void Cell::Draw()
 {
     DrawRectangle(position.x, position.y, 5, 5, color);
 
-    //smth like this
-    //Rectangle rec = {position.x, position.y, 5, 5};
+    //rotate it!!!
     //DrawRectanglePro(rec, position, randomRotateAngle, color);
     
 }
@@ -40,5 +33,9 @@ void Cell::Update()
 
     if(position.y >= GetScreenHeight())
     {position.y = 0.0;}
+}
+
+Cell::~Cell()
+{
 
 }

@@ -1,5 +1,4 @@
 #include "scent.hpp"
-#include <raylib.h>
 
 Scent::Scent()
 {
@@ -15,11 +14,6 @@ Scent::Scent()
     }
 }
 
-Scent::~Scent()
-{
-
-}
-
 void Scent::Draw()
 {
     for (int i = 0; i < cellcount*4; i = i + 4)
@@ -32,15 +26,7 @@ void Scent::Draw()
     }
 }
 
-void Scent::Update()
+Scent::~Scent()
 {
-    //use the color already set at object creation
-    //scentColor = from original color
-    //some function that gets it???
-}
 
-Color Scent::GetColor()
-{
-    //iterate 200x200 array
-    //store color???
 }
