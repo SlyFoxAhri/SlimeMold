@@ -3,11 +3,11 @@
 
 Game::Game()
 {
-    cellulNum = 10;
+    cellulNum = 1000;
     changeAmount = 10;
-    turnAngle = 0.2*PI;
+    turnAngle = 0.1*PI;
 
-    //create units
+    //create cellules
     for (int i = 0; i < cellulNum; i++)
     {
         Cellule cellule;
@@ -47,13 +47,10 @@ void Game::Draw()
     for (int i = 0; i < cellulNum; i++)
     {
         cellularray[i].Draw();
-        
-        
-        
         cellularray[i].Sense();
 
         //FollowSmell();
-        /*
+        
         int posX = (cellularray[i].position.x)/cellsize;
         int posY = (cellularray[i].position.y)/cellsize;
 
@@ -67,10 +64,11 @@ void Game::Draw()
         {posY = 200;}
 
         scentarray[posX][posY].scentValue = 255;
-        */
+        
 
+        //we use smellers to compare them with the array of grid cells
         //may not work properly or needs to be fine tuned
-        //Smell(&cellularray[i].leftSmeller, &cellularray[i].rightSmeller, &cellularray[i].centerSmeller, &cellularray[i].direction);
+        Smell(&cellularray[i].leftSmeller, &cellularray[i].rightSmeller, &cellularray[i].centerSmeller, &cellularray[i].direction);
         cellularray[i].Update();
 
     }
@@ -93,6 +91,7 @@ void Game::Smell(Vector2* L, Vector2* R, Vector2* C, Vector2* dir)
         *dir = Vector2Rotate(*dir, -turnAngle);
     }
 }
+
 /*
 void Game::FollowSmell()
 {
@@ -110,7 +109,7 @@ void Game::FollowSmell()
 
         scentarray[posX][posY].scentValue = 255;
 }
-        */
+*/   
 
 void Game::Update()
 {

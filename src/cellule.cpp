@@ -11,7 +11,7 @@ Cellule::Cellule()
     direction = {1.0, 1.0};
     direction = Vector2Rotate(direction, randomRotateAngle);
 
-    speed = 20;
+    speed = 10;
     color = RED;
 
     //play with values
@@ -22,7 +22,7 @@ Cellule::Cellule()
 void Cellule::Draw()
 {
     DrawRectangle(position.x-cellsize*0.5, position.y-cellsize*0.5, cellsize, cellsize, color);
-    DrawLine(position.x, position.y, position.x+(direction.x*10), position.y+(direction.y*10), GREEN);
+    //DrawLine(position.x, position.y, position.x+(direction.x*10), position.y+(direction.y*10), GREEN);
     //rotate it!!!
     //DrawRectanglePro(rec, position, randomRotateAngle, color);
 
@@ -36,14 +36,6 @@ void Cellule::Sense()
     leftSmeller = SensePositon(senseAngle);
     rightSmeller = SensePositon(-senseAngle);
     centerSmeller = SensePositon(0);
-
-    //leftSmeller = Vector2Rotate(direction, senseAngle);
-    //rightSmeller = Vector2Rotate(direction, -senseAngle);
-    //centerSmeller = SensePositon(0);
-    
-    //DrawCircle(leftSmeller.x,leftSmeller.y, 2.0 , PINK);
-    //DrawCircle(rightSmeller.x,rightSmeller.y, 2.0 , PINK);
-    //DrawCircle(centerSmeller.x,centerSmeller.y, 2.0 , PINK);
 }
 
 void Cellule::Update()
@@ -68,25 +60,24 @@ void Cellule::Update()
 Vector2 Cellule::SensePositon(float angle)
 {
     Vector2 sceentPosition;
-
+    Vector2 returnPosition;
 
     sceentPosition = Vector2Add(position , (Vector2Rotate(direction, angle)*senseLength));
-    DrawCircle(sceentPosition.x, sceentPosition.y, 2.0, GREEN);
-    /*
-    if(x > GetScreenWidth())
-    {x = 0;}
-
-    if(y > GetScreenHeight())
-    {y = 0;}
+    
+    sceentPosition.x = (int)(sceentPosition.x+GetScreenWidth())%GetScreenWidth();
+    sceentPosition.y = (int)(sceentPosition.y+GetScreenHeight())%GetScreenHeight();
+    //DrawCircle(sceentPosition.x, sceentPosition.y, 2.0, GREEN);
+    
+    float x = sceentPosition.x;
+    float y = sceentPosition.y;
 
     x = floor(x/cellsize);
     y = floor(y/cellsize);
 
     x = (int)x%cellcount;
     y = (int)y%cellcount;
-*/
 
-    return sceentPosition;
+    return returnPosition = {x, y};
 }
 
 Cellule::~Cellule()
