@@ -8,7 +8,7 @@ int main(void)
     Game game;
     
     InitWindow(cellsize*cellcount, cellsize*cellcount, "Slime Mold Enclosure");
-    SetTargetFPS(20);
+    SetTargetFPS(1);
         
     while (!WindowShouldClose())
     {
