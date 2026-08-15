@@ -16,17 +16,15 @@ class Cellule
         float randomPosX;
         float randomPosY;
         float randomRotateAngle;
+        Vector2 position;
+        Vector2 direction;
+        Color color;
         int speed;
         float senseAngle;
         float senseLength;
-        float turnAngle;
         Vector2 leftSmeller;
         Vector2 rightSmeller;
         Vector2 centerSmeller;
-        Color color;
-        Vector2 position;
-        Vector2 direction;
-        Rectangle rec;
     private:
 
 };

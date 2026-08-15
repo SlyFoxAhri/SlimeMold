@@ -1,5 +1,4 @@
 #include "cellule.hpp"
-#include "iostream"
 
 Cellule::Cellule()
 {
@@ -8,26 +7,21 @@ Cellule::Cellule()
     position = {randomPosX, randomPosY};
 
     randomRotateAngle = (GetRandomValue(0, 360))/PI;
-    direction = {1.0, 1.0};
-    direction = Vector2Rotate(direction, randomRotateAngle);
+    direction = Vector2Rotate({1.0, 1.0}, randomRotateAngle);
 
-    speed = 10;
+    speed = 20;
     color = RED;
 
     //play with values
     senseAngle = 0.2*PI;
-    senseLength = 10;
+    senseLength = 30;
 }
 
 void Cellule::Draw()
 {
-    DrawRectangle(position.x-cellsize*0.5, position.y-cellsize*0.5, cellsize, cellsize, color);
-    //DrawLine(position.x, position.y, position.x+(direction.x*10), position.y+(direction.y*10), GREEN);
+    DrawCircle(position.x, position.y, cellsize, color);
     //rotate it!!!
     //DrawRectanglePro(rec, position, randomRotateAngle, color);
-
-    //std::cout << position.x << " " << position.y << " " << direction.x << " " << direction.y << std::endl;
-    
 }
 
 void Cellule::Sense()
@@ -42,7 +36,7 @@ void Cellule::Update()
 {
     position.x += direction.x*speed*GetFrameTime();
     position.y += direction.y*speed*GetFrameTime();
-
+    
     if(position.x >= GetScreenWidth())
     {position.x = 0;}
     if(position.x < 0)
@@ -52,21 +46,17 @@ void Cellule::Update()
     {position.y = 0;}
     if(position.y < 0)
     {position.y = GetScreenHeight();}
-
-    //std::cout << "x: " << position.x << " " << "y: " << position.y <<  " " << "dir: " << direction.x << " " << direction.y << std::endl;
     
 }
 
 Vector2 Cellule::SensePositon(float angle)
 {
     Vector2 sceentPosition;
-    Vector2 returnPosition;
 
     sceentPosition = Vector2Add(position , (Vector2Rotate(direction, angle)*senseLength));
     
     sceentPosition.x = (int)(sceentPosition.x+GetScreenWidth())%GetScreenWidth();
     sceentPosition.y = (int)(sceentPosition.y+GetScreenHeight())%GetScreenHeight();
-    //DrawCircle(sceentPosition.x, sceentPosition.y, 2.0, GREEN);
     
     float x = sceentPosition.x;
     float y = sceentPosition.y;
@@ -77,7 +67,7 @@ Vector2 Cellule::SensePositon(float angle)
     x = (int)x%cellcount;
     y = (int)y%cellcount;
 
-    return returnPosition = {x, y};
+    return sceentPosition = {x, y};
 }
 
 Cellule::~Cellule()

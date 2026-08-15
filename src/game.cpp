@@ -1,10 +1,8 @@
 #include "game.hpp"
-#include "iostream"
 
 Game::Game()
 {
-    cellulNum = 1000;
-    changeAmount = 10;
+    cellulNum = 10000;
     turnAngle = 0.1*PI;
 
     //create cellules
@@ -23,7 +21,6 @@ Game::Game()
             scentarray[i][j] = scent; 
         }
     }
-        
 }
 
 void Game::HandleInput()
@@ -48,32 +45,23 @@ void Game::Draw()
     {
         cellularray[i].Draw();
         cellularray[i].Sense();
-
-        //FollowSmell();
-        
-        int posX = (cellularray[i].position.x)/cellsize;
-        int posY = (cellularray[i].position.y)/cellsize;
-
-        if(posX > 200)
-        {posX = 0;}
-        if(posX < 0)
-        {posX = 200;}
-        if(posY > 200)
-        {posY = 0;}
-        if(posY < 0)
-        {posY = 200;}
-
-        scentarray[posX][posY].scentValue = 255;
-        
-
-        //we use smellers to compare them with the array of grid cells
-        //may not work properly or needs to be fine tuned
+        FollowSmell(i);
         Smell(&cellularray[i].leftSmeller, &cellularray[i].rightSmeller, &cellularray[i].centerSmeller, &cellularray[i].direction);
         cellularray[i].Update();
-
     }
 }
 
+void Game::FollowSmell(int iterator)
+{
+    int posX = (cellularray[iterator].position.x)/cellsize;
+    int posY = (cellularray[iterator].position.y)/cellsize;
+
+
+    posX = (posX+cellcount)%cellcount;
+    posY = (posY+cellcount)%cellcount;
+    
+    scentarray[posX][posY].scentValue = 255;
+}
 
 void Game::Smell(Vector2* L, Vector2* R, Vector2* C, Vector2* dir)
 {
@@ -90,30 +78,6 @@ void Game::Smell(Vector2* L, Vector2* R, Vector2* C, Vector2* dir)
     {
         *dir = Vector2Rotate(*dir, -turnAngle);
     }
-}
-
-/*
-void Game::FollowSmell()
-{
-    int posX = (cellularray[i].position.x)/cellsize;
-        int posY = (cellularray[i].position.y)/cellsize;
-
-        if(posX > 200)
-        {posX = 0;}
-        if(posX < 0)
-        {posX = 200;}
-        if(posY > 200)
-        {posY = 0;}
-        if(posY < 0)
-        {posY = 200;}
-
-        scentarray[posX][posY].scentValue = 255;
-}
-*/   
-
-void Game::Update()
-{
-
 }
 
 Game::~Game()
