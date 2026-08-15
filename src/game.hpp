@@ -1,7 +1,7 @@
 #pragma once
 #include <raylib.h>
 #include <raymath.h>
-#include "cell.hpp"
+#include "cellule.hpp"
 #include "scent.hpp"
 #include "global.hpp"
 
@@ -13,9 +13,10 @@ class Game
         void Draw();
         void Update();
         void HandleInput();
-        int cellNum;
-        Cell cellarray[1000];
-        Scent scent;
+        void Smell(Vector2* L, Vector2* R, Vector2* C, Vector2* dir);
+        int cellulNum;
+        Cellule cellularray[1000];
+        Scent scentarray[200][200];
     private:
 
 

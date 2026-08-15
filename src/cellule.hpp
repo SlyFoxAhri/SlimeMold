@@ -4,14 +4,15 @@
 #include <math.h>
 #include "global.hpp" 
 
-class Cell
+class Cellule
 {
     public:
-        Cell();
-        ~Cell();
+        Cellule();
+        ~Cellule();
         void Draw();
         void Update();
-        float GetScent(float angle);
+        void Sense();
+        Vector2 SensePositon(float angle);
         float randomPosX;
         float randomPosY;
         float randomRotateAngle;
@@ -19,15 +20,13 @@ class Cell
         float senseAngle;
         float senseLength;
         float turnAngle;
-        float leftSmeller;
-        float rightSmeller;
-        float centerSmeller;
+        Vector2 leftSmeller;
+        Vector2 rightSmeller;
+        Vector2 centerSmeller;
         Color color;
         Vector2 position;
         Vector2 direction;
         Rectangle rec;
-        
-
     private:
 
 };

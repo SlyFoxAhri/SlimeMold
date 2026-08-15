@@ -1,6 +1,7 @@
-#include "cell.hpp"
+#include "cellule.hpp"
+#include "iostream"
 
-Cell::Cell()
+Cellule::Cellule()
 {
     randomPosX = (float)GetRandomValue(0,800);
     randomPosY = (float)GetRandomValue(0,800);
@@ -10,45 +11,51 @@ Cell::Cell()
     direction = {1.0, 1.0};
     direction = Vector2Rotate(direction, randomRotateAngle);
 
-    speed = 10;
+    speed = 5;
     color = RED;
 
     //play with values
     senseAngle = 0.2*PI;
-    senseLength = 10;
+    senseLength = 5;
     turnAngle = 0.2*PI;
 }
 
-void Cell::Draw()
+void Cellule::Draw()
 {
-    DrawRectangle(position.x, position.y, 5, 5, color);
+    DrawRectangle(position.x-cellsize*0.5, position.y-cellsize*0.5, cellsize, cellsize, color);
 
     //rotate it!!!
     //DrawRectanglePro(rec, position, randomRotateAngle, color);
     
 }
 
-void Cell::Update()
+void Cellule::Sense()
 {
-    
-    leftSmeller = GetScent(senseAngle);
-    rightSmeller = GetScent(-senseAngle);
-    centerSmeller = GetScent(0);
-    
+    //coordinate of sensor in grid
+    leftSmeller = SensePositon(senseAngle);
+    rightSmeller = SensePositon(-senseAngle);
+    centerSmeller = SensePositon(0);
+}
 
+void Cellule::Update()
+{
     position.x += direction.x*speed*GetFrameTime();
     position.y += direction.y*speed*GetFrameTime();
 
-    if(position.x >= GetScreenWidth())
-    {position.x = 0.0;}
+    if(position.x >= GetScreenWidth() && position.x < 0)
+    {position.x = 0;}
 
-    if(position.y >= GetScreenHeight())
-    {position.y = 0.0;}
+    if(position.y >= GetScreenHeight() && position.y < 0)
+    {position.y = 0;}
+
+    //std::cout << "x: " << position.x << " " << "y: " << position.y <<  " " << "dir: " << direction.x << " " << direction.y << std::endl;
     
 }
-//return vector of xy
-float Cell::GetScent(float angle)
+
+Vector2 Cellule::SensePositon(float angle)
 {
+    Vector2 sceentPosition;
+
     float x = position.x+senseLength*cosf(direction.x+angle);
     float y = position.y+senseLength*sinf(direction.y+angle);
 
@@ -58,23 +65,16 @@ float Cell::GetScent(float angle)
     if(y >= GetScreenHeight())
     {y = 0;}
 
-    //how to avoid errors with float?
-    //in theory i get coordinates -> do test
     x = floor(x/cellsize);
     y = floor(y/cellsize);
 
-    //now we have x y coordinates of the scents
-    //we have to check if the color value of the blue is bigger
-    //we should do this inside game?
     x = (int)x%cellcount;
     y = (int)y%cellcount;
 
-    float testreturnvalue = 2.0; 
-    return testreturnvalue;
-
+    return sceentPosition = {x, y};
 }
 
-Cell::~Cell()
+Cellule::~Cellule()
 {
 
 }
