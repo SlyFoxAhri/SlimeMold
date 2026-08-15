@@ -1,14 +1,10 @@
-#include <raylib.h>
-#include <raymath.h>
 #include "game.hpp"
 #include "iostream"
 
 using namespace std;
 
 int main(void)
-{
-    int cellsize = 4;
-    int cellcount = 200;
+{   
     Game game;
     
     InitWindow(cellsize*cellcount, cellsize*cellcount, "Slime Mold Enclosure");

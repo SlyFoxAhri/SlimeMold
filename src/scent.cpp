@@ -2,13 +2,11 @@
 
 Scent::Scent()
 {
-    cellcount = 200;
-    scentColorarray[200][200];
     for (int i = 0; i < cellcount; i++)
     {
         for (int j = 0; j < cellcount; j++)
         {
-            Color clr = {0,0,GetRandomValue(0,255),255};
+            Color clr = {0,0,(unsigned char)GetRandomValue(0,255),255};
             scentColorarray[i][j] = clr;
         }
     }

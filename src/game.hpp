@@ -1,6 +1,9 @@
+#pragma once
 #include <raylib.h>
+#include <raymath.h>
 #include "cell.hpp"
 #include "scent.hpp"
+#include "global.hpp"
 
 class Game
 {
