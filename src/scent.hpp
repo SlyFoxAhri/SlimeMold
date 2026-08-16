@@ -7,14 +7,11 @@ class Scent
     public:
         Scent();
         ~Scent();
-        //Color scentColorarray[200][200];
+        void Draw(int x, int y);
+        void Update();
         int scentValue;
         Color scentColor;
         bool isCellHere;
         int changeValue;
-        void Draw(int x, int y);
-        void Update();
-        Color ChangeScentColor();
-
     private:
 };

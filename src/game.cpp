@@ -29,6 +29,12 @@ void Game::HandleInput()
     //objects on the screen can be clicked 
     //this will be used to select what is being put down
     //food with scent or obsticle
+    if(IsKeyPressed(KEY_SPACE))
+    {
+        if(isPaused)
+        {isPaused = false;}
+        else{isPaused = true;}
+    }
 }
 
 void Game::Draw()
@@ -44,9 +50,25 @@ void Game::Draw()
     for (int i = 0; i < cellulNum; i++)
     {
         cellularray[i].Draw();
-        cellularray[i].Sense();
-        FollowSmell(i);
+        
+    }
+}
+
+void Game::Update()
+{
+    for (int i = 0; i < 200; i++)
+    {
+        for (int j = 0; j < 200; j++)
+        {
+            scentarray[i][j].Update();
+        }
+        
+    }
+    
+    for (int i = 0; i < cellulNum; i++)
+    {
         Smell(&cellularray[i].leftSmeller, &cellularray[i].rightSmeller, &cellularray[i].centerSmeller, &cellularray[i].direction);
+        FollowSmell(i);
         cellularray[i].Update();
     }
 }

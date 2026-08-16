@@ -24,16 +24,10 @@ void Cellule::Draw()
     //DrawRectanglePro(rec, position, randomRotateAngle, color);
 }
 
-void Cellule::Sense()
-{
-    //coordinate of sensor in grid
-    leftSmeller = SensePositon(senseAngle);
-    rightSmeller = SensePositon(-senseAngle);
-    centerSmeller = SensePositon(0);
-}
-
 void Cellule::Update()
 {
+    Sense();
+
     position.x += direction.x*speed*GetFrameTime();
     position.y += direction.y*speed*GetFrameTime();
     
@@ -47,6 +41,14 @@ void Cellule::Update()
     if(position.y < 0)
     {position.y = GetScreenHeight();}
     
+}
+
+void Cellule::Sense()
+{
+    //coordinate of sensor in grid
+    leftSmeller = SensePositon(senseAngle);
+    rightSmeller = SensePositon(-senseAngle);
+    centerSmeller = SensePositon(0);
 }
 
 Vector2 Cellule::SensePositon(float angle)
