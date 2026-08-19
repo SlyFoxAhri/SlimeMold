@@ -21,6 +21,13 @@ void Scent::Update()
     {scentValue = 0;}
 }
 
+void Scent::addtoScentValue(int sv)
+{
+    scentValue += sv;
+    if (scentValue > 255 )
+    {scentValue = 255;}
+}
+
 
 Scent::~Scent()
 {

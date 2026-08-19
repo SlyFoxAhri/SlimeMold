@@ -14,7 +14,7 @@ Cellule::Cellule()
 
     //play with values
     senseAngle = 0.2*PI;
-    senseLength = 30;
+    senseLength = 8*cellsize;
 }
 
 void Cellule::Draw()

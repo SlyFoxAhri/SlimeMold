@@ -9,6 +9,7 @@ class Scent
         ~Scent();
         void Draw(int x, int y);
         void Update();
+        void addtoScentValue(int sv);
         int scentValue;
         Color scentColor;
         bool isCellHere;

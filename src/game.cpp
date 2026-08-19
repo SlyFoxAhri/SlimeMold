@@ -2,8 +2,10 @@
 
 Game::Game()
 {
-    cellulNum = 10000;
-    turnAngle = 0.1*PI;
+    cellulNum = 1000;
+    turnAngle = 0.2*PI;
+    maxSmell = 255;
+    diffusedsmell = 10;
 
     //create cellules
     for (int i = 0; i < cellulNum; i++)
@@ -68,12 +70,12 @@ void Game::Update()
     for (int i = 0; i < cellulNum; i++)
     {
         Smell(&cellularray[i].leftSmeller, &cellularray[i].rightSmeller, &cellularray[i].centerSmeller, &cellularray[i].direction);
-        FollowSmell(i);
+        CreateSmell(i);
         cellularray[i].Update();
     }
 }
 
-void Game::FollowSmell(int iterator)
+void Game::CreateSmell(int iterator)
 {
     int posX = (cellularray[iterator].position.x)/cellsize;
     int posY = (cellularray[iterator].position.y)/cellsize;
@@ -82,7 +84,18 @@ void Game::FollowSmell(int iterator)
     posX = (posX+cellcount)%cellcount;
     posY = (posY+cellcount)%cellcount;
     
-    scentarray[posX][posY].scentValue = 255;
+    //turnicate both scentvalue and location to inside accept range
+    scentarray[posX][posY].addtoScentValue(maxSmell);
+    scentarray[posX+1][posY+1].addtoScentValue(diffusedsmell);
+    scentarray[posX+1][posY].addtoScentValue(diffusedsmell);
+    scentarray[posX+1][posY-1].addtoScentValue(diffusedsmell);
+    scentarray[posX][posY+1].addtoScentValue(diffusedsmell);
+    scentarray[posX][posY].addtoScentValue(diffusedsmell);
+    scentarray[posX][posY-1].addtoScentValue(diffusedsmell);
+    scentarray[posX-1][posY+1].addtoScentValue(diffusedsmell);
+    scentarray[posX-1][posY].addtoScentValue(diffusedsmell);
+    scentarray[posX+1][posY-1].addtoScentValue(diffusedsmell);
+
 }
 
 void Game::Smell(Vector2* L, Vector2* R, Vector2* C, Vector2* dir)
