@@ -2,10 +2,10 @@
 
 Scent::Scent()
 {
-    scentValue = GetRandomValue(0, 255);
+    //scentValue = GetRandomValue(0, 255);
+    scentValue = 0;
     scentColor = {0, 0, (unsigned char)scentValue, 255};
-    isCellHere = false;
-    changeValue = 2;
+    changeValue = 1;
 }
 
 void Scent::Draw(int x, int y)
@@ -17,7 +17,7 @@ void Scent::Draw(int x, int y)
 void Scent::Update()
 {
     scentValue -= changeValue;
-    if(scentValue <= 0)
+    if(scentValue < 0)
     {scentValue = 0;}
 }
 

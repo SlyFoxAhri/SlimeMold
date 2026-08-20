@@ -1,6 +1,6 @@
 #pragma once 
 #include <raylib.h>
-#include "global.hpp"
+#include "../global.hpp"
 
 class Scent
 {
@@ -12,7 +12,6 @@ class Scent
         void addtoScentValue(int sv);
         int scentValue;
         Color scentColor;
-        bool isCellHere;
         int changeValue;
     private:
 };

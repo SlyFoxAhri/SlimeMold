@@ -13,15 +13,13 @@ Cellule::Cellule()
     color = RED;
 
     //play with values
-    senseAngle = 0.2*PI;
+    senseAngle = 0.3*PI;
     senseLength = 8*cellsize;
 }
 
 void Cellule::Draw()
 {
     DrawCircle(position.x, position.y, cellsize, color);
-    //rotate it!!!
-    //DrawRectanglePro(rec, position, randomRotateAngle, color);
 }
 
 void Cellule::Update()
@@ -30,6 +28,8 @@ void Cellule::Update()
 
     position.x += direction.x*speed*GetFrameTime();
     position.y += direction.y*speed*GetFrameTime();
+    
+
     
     if(position.x >= GetScreenWidth())
     {position.x = 0;}
@@ -40,6 +40,8 @@ void Cellule::Update()
     {position.y = 0;}
     if(position.y < 0)
     {position.y = GetScreenHeight();}
+
+    //std::cout << position.x << " " << position.y << std::endl;
     
 }
 
