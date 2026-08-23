@@ -9,22 +9,21 @@ class Cellule
     public:
         Cellule();
         ~Cellule();
-        void Draw();
-        void Update();
-        void Sense();
-        Vector2 SensePositon(float angle);
-        float randomPosX;
-        float randomPosY;
-        float randomRotateAngle;
         Vector2 position;
         Vector2 direction;
-        Color color;
-        int speed;
         float senseAngle;
+        float turnAngle;
         float senseLength;
         Vector2 leftSmeller;
         Vector2 rightSmeller;
         Vector2 centerSmeller;
+        void Draw();
+        void Update();
+        void Sense();
+        void Smell();
+        void SetDirection(Vector2 newPos);
     private:
-
+        Color color;
+        int speed;
+        Vector2 SensePositon(float angle);
 };

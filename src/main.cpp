@@ -17,8 +17,7 @@ int main(void)
       
         game.HandleInput();
         game.Draw();
-        if(!isPaused)
-        {game.Update();}
+        game.Update();
     
         EndDrawing();
     }

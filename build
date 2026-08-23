@@ -1,0 +1,19 @@
+#! /bin/bash
+
+if [ "$1" = "clean" ]; then
+  echo "Cleaning..."
+  rm ./*.o
+  rm ./program
+fi
+
+echo "Compiling..."
+g++ -Wall -pedantic -g src/main.cpp src/game.cpp src/ui/panel.cpp src/ui/button.cpp src/core/core.cpp src/objects/cellule.cpp src/objects/scent.cpp src/global.cpp -c || exit $?
+
+echo "Linking..."
+g++ global.o main.o game.o panel.o button.o core.o cellule.o scent.o -lraylib -lGL -lm -lpthread -ldl -lrt -lX11 -o program || exit $?
+
+echo "Done :3"
+
+if [ "$1" = "run" ]; then
+    ./program
+fi

@@ -9,9 +9,11 @@ class Scent
         ~Scent();
         void Draw(int x, int y);
         void Update();
-        void addtoScentValue(int sv);
+        int GetScentValue();
+        void SetScentvalue(int newValue);
+        void ChangeScentvalue(int changeValue);
+    private:
         int scentValue;
         Color scentColor;
-        int changeValue;
-    private:
+        int evaporationValue;
 };

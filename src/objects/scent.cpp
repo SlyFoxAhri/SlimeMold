@@ -2,10 +2,9 @@
 
 Scent::Scent()
 {
-    //scentValue = GetRandomValue(0, 255);
     scentValue = 0;
     scentColor = {0, 0, (unsigned char)scentValue, 255};
-    changeValue = 1;
+    evaporationValue = -5;
 }
 
 void Scent::Draw(int x, int y)
@@ -16,18 +15,25 @@ void Scent::Draw(int x, int y)
 
 void Scent::Update()
 {
-    scentValue -= changeValue;
-    if(scentValue < 0)
-    {scentValue = 0;}
+    ChangeScentvalue(evaporationValue);
 }
 
-void Scent::addtoScentValue(int sv)
+int Scent::GetScentValue()
 {
-    scentValue += sv;
-    if (scentValue > 255 )
-    {scentValue = 255;}
+    return scentValue;
 }
 
+void Scent::SetScentvalue(int newValue)
+{
+    scentValue = newValue;
+}
+
+void Scent::ChangeScentvalue(int changeValue)
+{
+    scentValue += changeValue;
+    if(scentValue < 0) {scentValue = 0;}
+    else if(scentValue > 255) {scentValue = 255;}
+}
 
 Scent::~Scent()
 {
