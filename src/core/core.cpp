@@ -1,6 +1,8 @@
 #include "core.hpp"
 
-Core::Core()
+Core::Core(){}
+
+Core::Core(bool startPos, bool edgeBvr)
 {
     cellulNum = std::size(cellularray);
     scentLeftbyCellule=200;

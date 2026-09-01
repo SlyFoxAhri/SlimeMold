@@ -1,6 +1,7 @@
 #pragma once
 #include <raylib.h>
 #include <raymath.h>
+#include <vector>
 #include "../objects/cellule.hpp"
 #include "../objects/scent.hpp"
 #include "../global.hpp"
@@ -9,6 +10,7 @@
  {
     public:
         Core();
+        Core(bool startPos, bool edgeBvr);
         ~Core();
         void Draw();
         void Update();
