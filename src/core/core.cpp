@@ -2,7 +2,7 @@
 
 Core::Core(){}
 
-Core::Core(bool startPos, bool edgeBvr)
+Core::Core(int startPos, int edgeBvr)
 {
     cellulNum = std::size(cellularray);
     scentLeftbyCellule=200;
@@ -18,7 +18,7 @@ Core::Core(bool startPos, bool edgeBvr)
 
     for (int i = 0; i < cellulNum; i++)
     {
-        Cellule cellule;
+        Cellule cellule {startPos, edgeBvr};
         cellularray[i] = cellule;
     }
 }

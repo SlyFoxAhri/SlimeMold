@@ -2,7 +2,7 @@
 
 Game::Game()
 {
-    gameCore = std::make_unique<Core>(1, 0);
+    gameCore = std::make_unique<Core>(startPosition, edgeBehaviour);
     isPaused = false;
     isPanelShown = true;
 }
@@ -21,6 +21,12 @@ void Game::HandleInput()
         {isPaused = false;}
         else{isPaused = true;}
     }
+    if(IsKeyPressed(KEY_X))
+    {
+        if(isPanelShown)
+        {isPanelShown = false;}
+        else{isPanelShown = true;}
+    }
     if(panel.startBtn.isClick(GetMousePosition(), isLeftMousePressed)) {isPaused = false;}
     if(panel.stopBtn.isClick(GetMousePosition(), isLeftMousePressed)) {isPaused = true;}
     if(panel.resetBtn.isClick(GetMousePosition(), isLeftMousePressed)) {gameCore.reset(new Core(startPosition, edgeBehaviour)); isPaused = false;}
@@ -29,7 +35,6 @@ void Game::HandleInput()
     if(panel.wrapBtn.isClick(GetMousePosition(), isLeftMousePressed)) {edgeBehaviour = WRAP;}
     if(panel.edgeBtn.isClick(GetMousePosition(), isLeftMousePressed)) {edgeBehaviour = EDGE;}
 
-    panel.HandleInput();
 }
 
 void Game::Draw()

@@ -1,16 +1,28 @@
 #include "cellule.hpp"
 
-Cellule::Cellule()
+Cellule::Cellule(){}
+
+Cellule::Cellule(int startPosition, int edgeBehaviour)
 {
-    float randomPosX = (float)GetRandomValue(0,cellcount*cellsize);
-    float randomPosY = (float)GetRandomValue(0,cellcount*cellsize);
-    position = {randomPosX, randomPosY};
+    if (startPosition == SCATTER_START)
+    {
+        float randomPosX = (float)GetRandomValue(0,cellcount*cellsize);
+        float randomPosY = (float)GetRandomValue(0,cellcount*cellsize);
+        position = {randomPosX, randomPosY};
+    }
+    else
+    {
+        position = {(float)(cellsize*cellcount)/2, (float)(cellsize*cellcount)/2};
+    }
+
+    if (edgeBehaviour == EDGE) {isEdgy = true;}
+    else {isEdgy = false;}
 
     float randomRotateAngle = (GetRandomValue(1, 360))/PI;
     direction = Vector2Rotate({1.0, 1.0}, randomRotateAngle);
 
     color = RED;
-    speed = 3*cellsize;
+    speed = 10*cellsize;
     
     //play with values
     senseAngle = 0.1*PI;
@@ -25,20 +37,39 @@ void Cellule::Draw()
 
 void Cellule::Update()
 {
+    //we need a way to universaly detect obsticles
+    //core sets sides as onsticle
+
     Sense();
 
     position.x += direction.x*speed*GetFrameTime();
     position.y += direction.y*speed*GetFrameTime();
     
-    if(position.x >= GetScreenWidth())
-    {position.x = 0;}
-    if(position.x < 0)
-    {position.x = GetScreenWidth();}
+    if(isEdgy)
+    {
+        if(position.x >= GetScreenWidth())
+        {direction.x = -(direction.x);}
+        if(position.x < 0)
+        {direction.x = -(direction.x);}
 
-    if(position.y >= GetScreenHeight())
-    {position.y = 0;}
-    if(position.y < 0)
-    {position.y = GetScreenHeight();}
+        if(position.y >= GetScreenHeight())
+        {direction.y = -(direction.y);}
+        if(position.y < 0)
+        {direction.y = -(direction.y);}
+    }
+    else
+    {
+        if(position.x >= GetScreenWidth())
+        {position.x = 0;}
+        if(position.x < 0)
+        {position.x = GetScreenWidth();}
+
+        if(position.y >= GetScreenHeight())
+        {position.y = 0;}
+        if(position.y < 0)
+        {position.y = GetScreenHeight();}
+    }
+    
 }
 
 void Cellule::SetDirection(Vector2 newPos)
@@ -65,8 +96,16 @@ Vector2 Cellule::SensePositon(float angle)
 
     sceentPosition = Vector2Add(position , (Vector2Rotate(direction, angle)*senseLength));
     
-    sceentPosition.x = (int)(sceentPosition.x+GetScreenWidth())%GetScreenWidth();
-    sceentPosition.y = (int)(sceentPosition.y+GetScreenHeight())%GetScreenHeight();
+    if(isEdgy)
+    {
+        sceentPosition.x = (int)(sceentPosition.x+GetScreenWidth())%GetScreenWidth();
+        sceentPosition.y = (int)(sceentPosition.y+GetScreenHeight())%GetScreenHeight();
+    }
+    else
+    {
+        sceentPosition.x = (int)sceentPosition.x;
+        sceentPosition.y = (int)sceentPosition.y;
+    }
     
     float x = sceentPosition.x;
     float y = sceentPosition.y;

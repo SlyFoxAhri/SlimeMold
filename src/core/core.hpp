@@ -10,7 +10,7 @@
  {
     public:
         Core();
-        Core(bool startPos, bool edgeBvr);
+        Core(int startPos, int edgeBvr);
         ~Core();
         void Draw();
         void Update();
@@ -19,7 +19,7 @@
         int scentLeftbyCellule;
         int temparray[180][180];
         Scent scentarray[180][180];
-        Cellule cellularray[10000];
+        Cellule cellularray[1000];
         void Smell(Cellule* currentcell);
         void LeaveScentTrail(int iterator);
         void DiffuseScent();

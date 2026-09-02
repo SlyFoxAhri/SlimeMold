@@ -8,6 +8,7 @@ class Cellule
 {
     public:
         Cellule();
+        Cellule(int startPosition, int edgeBehaviour);
         ~Cellule();
         Vector2 position;
         Vector2 direction;
@@ -26,4 +27,5 @@ class Cellule
         Color color;
         int speed;
         Vector2 SensePositon(float angle);
+        bool isEdgy;
 };

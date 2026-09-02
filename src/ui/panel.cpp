@@ -44,17 +44,6 @@ void Panel::Draw()
 
 void Panel::HandleInput()
 {
-    //Vector2 mousePos = GetMousePosition();
-    //isLeftMousePressed = IsMouseButtonPressed(MOUSE_BUTTON_LEFT);
-    //isRightMousePressed = IsMouseButtonPressed(MOUSE_BUTTON_RIGHT);
-//
-    //if(startBtn.isClick(GetMousePosition(), isLeftMousePressed)) {std::cout << "start" << std::endl;}
-    //if(stopBtn.isClick(GetMousePosition(), isLeftMousePressed)) {std::cout << "stop" << std::endl;}
-    //if(resetBtn.isClick(GetMousePosition(), isLeftMousePressed)) {}
-    //if(centralBtn.isClick(GetMousePosition(), isLeftMousePressed)) {}
-    //if(scatteredBtn.isClick(GetMousePosition(), isLeftMousePressed)) {}
-    //if(wrapBtn.isClick(GetMousePosition(), isLeftMousePressed)) {}
-    //if(edgeBtn.isClick(GetMousePosition(), isLeftMousePressed)) {}
 
 }
 

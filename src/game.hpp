@@ -23,13 +23,13 @@ class Game
         Panel panel;
         Color scentcolor;
         Color agentcolor;
-        bool startPosition;
-        bool edgeBehaviour;
+        int startPosition;
+        int edgeBehaviour;
         bool isPaused;
         bool isPanelShown;
         bool isLeftMousePressed;
         bool isRightMousePressed;
 
-        enum startPos {SCATTER_START = 1, CENTER_START = 0};
-        enum edgeBvr {WRAP = 1, EDGE = 0};
+        //enum startPos {SCATTER_START = 1, CENTER_START = 0};
+        //enum edgeBvr {WRAP = 1, EDGE = 0};
 };
