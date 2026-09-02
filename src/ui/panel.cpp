@@ -13,7 +13,7 @@ Panel::Panel()
     edgeBehaviour = "Container behaviour";
     howDoIHudeUi = "Press X to hide UI";
     textColor = {200, 200, 200, 255};
-    fontSize = 10;
+    fontSize = 5;
 
     //buttonarray[7] = {startBtn, stopBtn, resetBtn, centralBtn, scatteredBtn, wrapBtn, edgeBtn};
     

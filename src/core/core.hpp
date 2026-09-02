@@ -20,7 +20,7 @@
         int scentLeftbyCellule;
         int temparray[180][180];
         Scent scentarray[180][180];
-        Cellule cellularray[1000];
+        Cellule cellularray[10000];
         void Smell(Cellule* currentcell);
         void LeaveScentTrail(int iterator);
         void DiffuseScent();

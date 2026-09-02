@@ -21,7 +21,7 @@ Cellule::Cellule(int startPosition, int edgeBehaviour)
     float randomRotateAngle = (GetRandomValue(1, 360))/PI;
     direction = Vector2Rotate({1.0, 1.0}, randomRotateAngle);
 
-    color = RED;
+    color = BLUE;
     speed = 10*cellsize;
     
     //play with values
