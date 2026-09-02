@@ -2,6 +2,7 @@
 
 Game::Game()
 {
+    startPosition = SCATTER_START; edgeBehaviour = WRAP;
     gameCore = std::make_unique<Core>(startPosition, edgeBehaviour);
     isPaused = false;
     isPanelShown = true;
@@ -29,18 +30,18 @@ void Game::HandleInput()
     }
     if(panel.startBtn.isClick(GetMousePosition(), isLeftMousePressed)) {isPaused = false;}
     if(panel.stopBtn.isClick(GetMousePosition(), isLeftMousePressed)) {isPaused = true;}
+    if(panel.clearBtn.isClick(GetMousePosition(), isLeftMousePressed)) {gameCore->ClearScent();}
     if(panel.resetBtn.isClick(GetMousePosition(), isLeftMousePressed)) {gameCore.reset(new Core(startPosition, edgeBehaviour)); isPaused = false;}
-    if(panel.centralBtn.isClick(GetMousePosition(), isLeftMousePressed)) {startPosition = CENTER_START;}
-    if(panel.scatteredBtn.isClick(GetMousePosition(), isLeftMousePressed)) {startPosition = SCATTER_START;}
-    if(panel.wrapBtn.isClick(GetMousePosition(), isLeftMousePressed)) {edgeBehaviour = WRAP;}
-    if(panel.edgeBtn.isClick(GetMousePosition(), isLeftMousePressed)) {edgeBehaviour = EDGE;}
+    if(panel.centralBtn.isClick(GetMousePosition(), isLeftMousePressed)) {startPosition = CENTER_START; panel.setButtonColor(&panel.centralBtn);}
+    if(panel.scatteredBtn.isClick(GetMousePosition(), isLeftMousePressed)) {startPosition = SCATTER_START; panel.setButtonColor(&panel.scatteredBtn);}
+    if(panel.wrapBtn.isClick(GetMousePosition(), isLeftMousePressed)) {edgeBehaviour = WRAP; panel.setButtonColor(&panel.wrapBtn);}
+    if(panel.edgeBtn.isClick(GetMousePosition(), isLeftMousePressed)) {edgeBehaviour = EDGE; panel.setButtonColor(&panel.edgeBtn);}
 
 }
 
 void Game::Draw()
 {
     gameCore->Draw();
-    
 }
 
 void Game::Update()

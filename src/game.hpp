@@ -17,9 +17,7 @@ class Game
         void Update();
         void HandleInput();
     private:
-        //Core gameCore; 
         std::unique_ptr<Core> gameCore;
-        
         Panel panel;
         Color scentcolor;
         Color agentcolor;
@@ -29,7 +27,4 @@ class Game
         bool isPanelShown;
         bool isLeftMousePressed;
         bool isRightMousePressed;
-
-        //enum startPos {SCATTER_START = 1, CENTER_START = 0};
-        //enum edgeBvr {WRAP = 1, EDGE = 0};
 };

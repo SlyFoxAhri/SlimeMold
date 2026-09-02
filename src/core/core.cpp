@@ -59,6 +59,17 @@ void Core::Update()
     }
 }
 
+void Core::ClearScent()
+{
+    for (int i = 0; i < cellcount; i++)
+    {
+        for (int j = 0; j < cellcount; j++)
+        {
+            scentarray[i][j].SetScentvalue(-255);
+        }
+    }
+}
+
 void Core::Smell(Cellule* currentcell)
 {
     Vector2 L = currentcell->leftSmeller;

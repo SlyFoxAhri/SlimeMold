@@ -19,11 +19,12 @@ Panel::Panel()
     
     buttonarray[0] = startBtn;
     buttonarray[1] = stopBtn;
-    buttonarray[2] = resetBtn;
-    buttonarray[3] = centralBtn;
-    buttonarray[4] = scatteredBtn;
-    buttonarray[5] = wrapBtn;
-    buttonarray[6] = edgeBtn;
+    buttonarray[2] = clearBtn;
+    buttonarray[3] = resetBtn;
+    buttonarray[4] = centralBtn;
+    buttonarray[5] = scatteredBtn;
+    buttonarray[6] = wrapBtn;
+    buttonarray[7] = edgeBtn;
 }
 
 void Panel::Draw()
@@ -42,15 +43,40 @@ void Panel::Draw()
     }
 }
 
-void Panel::HandleInput()
-{
-
-}
 
 void Panel::Update()
 {
     //buttons overlay?? 
     //ore everything in draw function??
+}
+
+void Panel::setButtonColor(Button *button)
+{
+    if(button == &centralBtn)
+    {
+        button->color = RED;
+        Button* notBtn = &scatteredBtn;
+        notBtn->color = GREEN;
+    }
+    else if(button == &scatteredBtn)
+    {
+        button->color = RED;
+        Button* notBtn = &centralBtn;
+        notBtn->color = GREEN;
+    }
+    else if(button == &wrapBtn)
+    {
+        button->color = RED;
+        Button* notBtn = &edgeBtn;
+        notBtn->color = GREEN;
+    }
+    else if (button == &edgeBtn)
+    {
+        button->color = RED;
+        Button* notBtn = &wrapBtn;
+        notBtn->color = GREEN;
+    }
+
 }
 
 Panel::~Panel()

@@ -14,6 +14,7 @@
         ~Core();
         void Draw();
         void Update();
+        void ClearScent();
     private:
         int cellulNum;
         int scentLeftbyCellule;
