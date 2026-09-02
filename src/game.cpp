@@ -2,9 +2,10 @@
 
 Game::Game()
 {
+    startPosition = SCATTER_START; edgeBehaviour = WRAP;
     gameCore = std::make_unique<Core>(startPosition, edgeBehaviour);
     isPaused = false;
-    isPanelShown = true;
+    isPanelShown = false;
 }
 
 void Game::HandleInput()
