@@ -16,8 +16,8 @@ if (RAYLIB_FETCH)
         GIT_REPOSITORY "https://github.com/raysan5/raylib.git"
         GIT_TAG "master"
         GIT_PROGRESS TRUE
-        FetchContent_MakeAvailable(raylib)
     )
+    FetchContent_MakeAvailable(raylib)
 endif()
 
 file(GLOB_RECURSE all_srcs
