@@ -1,4 +1,4 @@
-#include "scent.hpp"
+#include "../../include/scent.hpp"
 
 Scent::Scent()
 {

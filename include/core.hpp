@@ -2,9 +2,9 @@
 #include <raylib.h>
 #include <raymath.h>
 #include <vector>
-#include "../objects/cellule.hpp"
-#include "../objects/scent.hpp"
-#include "../global.hpp"
+#include "cellule.hpp"
+#include "scent.hpp"
+#include "global.hpp"
 
  class Core
  {

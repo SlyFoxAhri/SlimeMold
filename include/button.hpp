@@ -1,5 +1,5 @@
 #include <raylib.h>
-#include "../global.hpp"
+#include "global.hpp"
 
 class Button
 {

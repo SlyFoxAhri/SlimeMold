@@ -2,7 +2,7 @@
 #include <raylib.h>
 #include <raymath.h>
 #include <math.h>
-#include "../global.hpp" 
+#include "global.hpp" 
 
 class Cellule
 {

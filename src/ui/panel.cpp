@@ -1,4 +1,4 @@
-#include "panel.hpp"
+#include "../../include/panel.hpp"
 
 Panel::Panel()
 {

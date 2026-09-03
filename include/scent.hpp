@@ -1,6 +1,6 @@
 #pragma once 
 #include <raylib.h>
-#include "../global.hpp"
+#include "global.hpp"
 
 class Scent
 {

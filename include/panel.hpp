@@ -2,7 +2,7 @@
 #include <raylib.h>
 #include <string>
 #include "button.hpp"
-#include "../global.hpp"
+#include "global.hpp"
 
 
 class Panel
