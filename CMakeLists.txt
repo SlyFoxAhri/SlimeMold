@@ -9,9 +9,8 @@ option(RAYLIB_FETCH "Download raylib if not installed" ON)
 include(FetchContent)
 set(BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
 set(BUILD_GAMES OFF CACHE BOOL "" FORCE)
-find_package(raylib)
 
-if (NOT raylib_FOUND AND RAYLIB_FETCH)
+if (RAYLIB_FETCH)
     FetchContent_Declare(
         raylib
         GIT_REPOSITORY "https://github.com/raysan5/raylib.git"
