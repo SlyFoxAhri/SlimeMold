@@ -32,7 +32,13 @@ Each agent follows a simple process:
 
 ## Installing
 
->**The project was only tested on linux and still under development, there is no guarantee that is works on other systems**
+>**The project is still under development, there is no guarantee that is works on other systems**
+
+### Download for linux
+
+A precompiled binary is available for x64 linux systems
+
+### Compile from source (cross platform)
 
 **Requirements:**
 - C++17 compatible compiler
@@ -59,6 +65,7 @@ cd SlimeMold
 **Build**
 
 ```bash
+mkdir build
 cd build
 cmkae ..
 make
