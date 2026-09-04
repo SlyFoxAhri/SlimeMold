@@ -28,6 +28,14 @@ void Game::HandleInput()
         {isPanelShown = false;}
         else{isPanelShown = true;}
     }
+    if(IsKeyPressed(KEY_C))
+    {
+        gameCore->ClearScent();
+    }
+    if(IsKeyPressed(KEY_R))
+    {
+        gameCore.reset(new Core(startPosition, edgeBehaviour)); isPaused = false;
+    }
     if(panel.startBtn.isClick(GetMousePosition(), isLeftMousePressed)) {isPaused = false;}
     if(panel.stopBtn.isClick(GetMousePosition(), isLeftMousePressed)) {isPaused = true;}
     if(panel.clearBtn.isClick(GetMousePosition(), isLeftMousePressed)) {gameCore->ClearScent();}
