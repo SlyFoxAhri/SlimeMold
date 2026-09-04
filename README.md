@@ -20,6 +20,58 @@ Each agent follows a simple process:
 4. Move forward through the environment.
 5. Deposit a trail of chemical signal.
 
+
+## Controls
+
+`Space` - Pause or resume the simulation \
+`R` - Reset the simulation \
+`C` - Clear the trail field \
+`X` - Show/hide UI \
+`Esc` - Exit the application 
+
+
+## Installing
+
+>**The project was only tested on linux and still under development, there is no guarantee that is works on other systems**
+
+**Requirements:**
+- C++17 compatible compiler
+- Cmake 3.3 or newer
+- [raylib](https://www.raylib.com/)
+
+
+**Install raylib**
+
+Ubuntu/Debian:
+
+```bash
+sudo apt update
+sudo apt install libraylib-dev
+```
+
+**Clone the Repository**
+
+```bash
+git clone https://github.com/SlyFoxAhri/SlimeMold.git
+cd SlimeMold
+```
+
+**Build**
+
+```bash
+cd build
+cmkae ..
+make
+```
+
+**Run**
+```
+./SlimeMold  #Linux
+SlimeMold.exe  #windows
+```
+
+
+## COMING SOON
 ## Parameters by user input
 
 **Environment**
@@ -43,56 +95,12 @@ Each agent follows a simple process:
 - Agent size
 - Random movement or directional noise
 
-**COMING SOON \
-(Interactive Objects)**
+**Interactive Objects**
 
 - Place obstacles in the environment
 - Remove obstacles
 - Add food sources
 - Remove food sources
-
-## Controls
-
-`Space` - Pause or resume the simulation \
-`R` - Reset the simulation \
-`C` - Clear the trail field \
-`X` - Show/hide UI \
-`Esc` - Exit the application 
-
-
-## Installing
-
->**The project was only tested on linux and still under development, there is no guarantee that is works on other systems**
-
-**Requirements:**
-- C++17 compatible compiler
-- [raylib](https://www.raylib.com/)
-
-
-**Install raylib**
-
-Ubuntu/Debian:
-
-```bash
-sudo apt update
-sudo apt install libraylib-dev
-```
-
-**Clone the Repository**
-
-```bash
-git clone https://github.com/SlyFoxAhri/SlimeMold.git
-cd SlimeMold
-```
-
-**Build & run**
-
-```bash
-./build run
-```
-## COMING SOON
-- Food and obstacle drawing and shapes
-- Adjustable window size
 
 ## Future Improvements
 
