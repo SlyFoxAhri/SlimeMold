@@ -2,11 +2,8 @@
 #include <raylib.h>
 #include <raymath.h>
 #include <memory>
-#include "cellule.hpp"
-#include "scent.hpp"
 #include "core.hpp"
 #include "panel.hpp"
-#include "global.hpp"
 
 class Game
 {
